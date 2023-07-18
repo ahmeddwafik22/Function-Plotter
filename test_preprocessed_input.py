@@ -27,5 +27,4 @@ import eval_system
 def test(fun_x, expected_validation):
     o=eval_system.eval_service()
     v,s=o.preprocess_text(fun_x)
-    print(s)
     assert s == expected_validation

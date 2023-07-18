@@ -13,8 +13,7 @@ def app(qtbot):
     qtbot.addWidget(window)
     return window
 
-
-
+### if flag_test ==1 ---> means that the warning message appear and input is invalid
 
 # test click plot without writing the functiom
 def test_1(app, qtbot):
@@ -22,7 +21,6 @@ def test_1(app, qtbot):
     window.function_widget.flag_test=0
     qtbot.mouseClick(window.function_widget.plot_button, Qt.LeftButton)
     assert window.function_widget.flag_test ==1
-
 
 # test invalid_x_min
 def test_2(app, qtbot):
@@ -391,8 +389,3 @@ def test_40(app, qtbot):
     window.function_widget.x_max_textbox.setText("10")
     qtbot.mouseClick(window.function_widget.plot_button, Qt.LeftButton)
     assert window.function_widget.flag_test == 1
-
-
-
-
-

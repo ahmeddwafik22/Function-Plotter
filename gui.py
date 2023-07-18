@@ -8,7 +8,6 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 import eval_system
 import re
 
-
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
@@ -32,7 +31,6 @@ class MainWindow(QMainWindow):
 
 class FunctionInputWidget(QWidget):
     def __init__(self):
-
         super(FunctionInputWidget, self).__init__()
 
 
@@ -44,7 +42,6 @@ class FunctionInputWidget(QWidget):
         self.fun_textbox = QLineEdit(self)
         self.fun_textbox.setPlaceholderText("Enter a function (e.g., x**2 + 3*x)")
         self.fun_textbox.returnPressed.connect(self.plot_function)
-
         self.layout.addWidget(self.fun_textbox)
 
         self.x_min_label = QLabel("x_min", self)
@@ -55,33 +52,25 @@ class FunctionInputWidget(QWidget):
         self.x_min_textbox.move(250, 280)
         self.layout.addWidget(self.x_min_textbox)
 
-
         self.x_max_label = QLabel("x_max", self)
         self.x_max_label.move(280,250)
         self.layout.addWidget(self.x_max_label)
 
         self.x_max_textbox = QLineEdit(self)
         self.x_max_textbox.move(280, 280)
-
-
         self.layout.addWidget(self.x_max_textbox)
-
-
 
         self.plot_button = QPushButton("plot", self)
         self.plot_button.move(20, 80)
         self.plot_button.clicked.connect(self.plot_function)
         self.layout.addWidget(self.plot_button)
 
-
         self.plot_widget = None
         self.ax=None
 
 
-
     def set_plot_widget(self,plot_widget):
         self.plot_widget=plot_widget
-
 
     def plot_function(self):
         self.plot_widget.refresh()
@@ -90,14 +79,9 @@ class FunctionInputWidget(QWidget):
         x_min=self.x_min_textbox.text()
         x_max=self.x_max_textbox.text()
 
-
-
-
         if(len(function_text)==0):
             self.flag_test=1
             QMessageBox.warning(self,"Warning", "please write your function")
-
-
 
         elif len(x_min)==0:
             self.flag_test=1
@@ -133,7 +117,6 @@ class FunctionInputWidget(QWidget):
 
             else:
                 try:
-
                     x,y=self.eval_system.eval(self.s,float(x_min),float(x_max))
                     self.ax=self.plot_widget.plot(x,y,self.s)
 
@@ -161,11 +144,8 @@ class PlotWidget(QWidget):
         self.canvas = FigureCanvas(self.figure)
         self.layout.addWidget(self.canvas)
 
-
-
     def plot(self, x, y,fun_x):
         self.figure.clear()
-
         ax = self.figure.add_subplot(111)
         ax.plot(x, y)
 
@@ -173,9 +153,6 @@ class PlotWidget(QWidget):
         ax.set_ylabel('f(x)')
 
         plt.title('Graph of f(x) = '+fun_x)
-
-
-
         self.canvas.draw()
 
         return ax
@@ -186,20 +163,3 @@ if __name__ == "__main__":
      window = MainWindow()
      window.show()
      sys.exit(app.exec_())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -7,12 +7,13 @@ class _eval_service:
     def preprocess_text(self,function_text):
 
         """
-        :param function_text: this is the function of x that will take from the user
+        :param:
+                function_text: this is the function of x that will take from the user
 
-        :return: valid --> boolean variable if it is true --> valid input , false --> invalid_input
-         ,       s-- if valid is true --> s --> cleaned_function_of_x , otherwise s--> warning_message
+        :return:
+                 valid --> boolean variable if it is true --> valid input , false --> invalid_input
+                 s--> preprocessed_function_of_x if valid is true otherwise s--> warning_message
         """
-
 
         function_text=function_text.lower()
 
@@ -31,8 +32,10 @@ class _eval_service:
         prev_c=""
         count_oper=0 ## this is used to handle something like (5--x) to be (5++x)
         appear=False ## this is used to know that the digit or "x" appear at least once or not
+
         if function_text[-1] in oper:
             return False,"Invalid Function as you write: "+function_text[-1]+" without any digit"
+
         if function_text[-1] ==".":
             return False,"Invalid Function as you write: '.' operation at the end of the string"
 
@@ -81,8 +84,6 @@ class _eval_service:
                         s+="-"
                 prev_oper="" # this is made to not reach the condition again until we found another opeation
 
-
-
             if c.isnumeric():
                 if(not appear):
                     appear=True
@@ -124,7 +125,6 @@ class _eval_service:
 
                 s+=c
 
-
             else:
                 prev_c=c
                 if c in oper:
@@ -137,22 +137,18 @@ class _eval_service:
 
             prev_c=c
 
-
-
-
         s=s.replace("[","(")
         s=s.replace("]",")")
 
         s=s.replace("{","(")
         s=s.replace("}",")")
 
-
         return (True,s) if not stack else (False,"Invalid Paraenthesis")
 
 
     def eval(self,function_text,x_min,x_max):
         """
-        :param function_text: "cleaned_function_of_x"
+        :param function_text: "preprocessed_function_of_x"
         :param x_min: "min range of the graph"
         :param x_max: "max range of the graph"
         :return: "x,y to be ready for plotting"
@@ -169,4 +165,3 @@ def eval_service():
     if _eval_service._instance is None:
         _eval_service._instance=_eval_service()
     return _eval_service._instance
-
