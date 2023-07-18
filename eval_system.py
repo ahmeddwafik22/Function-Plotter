@@ -26,7 +26,7 @@ class _eval_service:
             return False,"Your function is empty"
 
         s=""
-        stack=[] ## this is used when validating the parenthesis
+        stack=[] ## this is used when validating the parentheses
         paren_dic={")":"(","]":"[","}":"{"}
         oper={"*","/","+","-","^"}
         prev_oper="" ## this is used to know what is the previous operation in the loop
@@ -60,7 +60,7 @@ class _eval_service:
                     prev_oper=c
                     count_oper=1
 
-            if(prev_oper!="") and c not in oper : ## this condition when that we count the operations to put it before digit or "x" or parenthesis
+            if(prev_oper!="") and c not in oper : ## this condition when that we count the operations to put it before digit or "x" or parentheses
 
                 if(prev_oper=="*"):
                     if(count_oper==1):
@@ -110,10 +110,10 @@ class _eval_service:
                     stack.pop()
                     s+=c
                 else:
-                    return False,"Invalid parenthesis"
+                    return False,"Invalid parentheses"
 
                 if(prev_c in oper or prev_c in paren_dic.values()):
-                    return False,"Invalid function, please revise that you write between the parenthesis"
+                    return False,"Invalid function, please revise that you write between the parentheses"
 
 
             elif c in paren_dic.values():
@@ -144,7 +144,7 @@ class _eval_service:
         s=s.replace("{","(")
         s=s.replace("}",")")
 
-        return (True,s) if not stack else (False,"Invalid Paraenthesis")
+        return (True,s) if not stack else (False,"Invalid parentheses")
 
 
     def eval(self,function_text,x_min,x_max):
