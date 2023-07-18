@@ -1,5 +1,7 @@
 # Function-Plotter
 
+##Function Plotter ia a graphical user interface (GUI) . The GUI allows the user to input a function of x and specify the minimum and maximum values of x. The program then plots the function within the given range using Matplotlib.
+
 
 ### Valid Examples
 ![](/Valid_Examples/1.png)
