@@ -1,2 +1,2 @@
 # Function-Plotter
-![](/Valid Examples/img1.png)
+![](/Valid Examples/1.png)
